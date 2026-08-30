@@ -16,7 +16,7 @@ graph TD
         admin_react[React Admin Dashboard]
     end
 
-    subgraph Unified Backend (Bussiness/backend)
+    subgraph Unified Backend (backend)
         express_server[Express server.ts]
         routes_personal[routes/personal.ts /api]
         routes_business[business-service/src/routes.ts]
@@ -40,7 +40,7 @@ graph TD
 ```
 
 The repository is organized into the following key folders:
-1. **`Bussiness/backend/`**: The main Express.js backend server. It serves both business banking services and personal consumer APIs, backed by a unified PostgreSQL database managed through Prisma.
+1. **`backend/`**: The main Express.js backend server. It serves both business banking services and personal consumer APIs, backed by a unified PostgreSQL database managed through Prisma.
 2. **`admin_dashboard/`**: The unified React + Vite administration dashboard. Allows super-admins to monitor statistics, manage users, approve business KYC, issue cards, track NFC payments, and resolve security fraud flags.
 3. **`Personal/central_stadard_cpb/`**: The Flutter mobile application designed for personal consumer banking.
 4. **`Personal/public_website/`**: Marketing landing pages and public web assets.
@@ -59,7 +59,7 @@ The backend is built with **TypeScript**, **Express**, and **Prisma ORM**.
 ### Setup Instructions
 1. Navigate to the backend directory:
    ```bash
-   cd Bussiness/backend
+   cd backend
    ```
 2. Install dependencies:
    ```bash
@@ -71,7 +71,7 @@ The backend is built with **TypeScript**, **Express**, and **Prisma ORM**.
    # Select all packages (press 'a' then 'Enter'), and confirm 'y'
    ```
 4. Configure your `.env` variables:
-   Create a `.env` file in `Bussiness/backend/` and configure the following parameters:
+   Create a `.env` file in `backend/` and configure the following parameters:
    ```env
    # PostgreSQL Connection
    DATABASE_URL="postgresql://username:password@localhost:5432/centra_db?schema=public"
