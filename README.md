@@ -10,23 +10,23 @@ This repository has been consolidated to run a shared, high-performance PostgreS
 
 ```mermaid
 graph TD
-    subgraph Client Apps
-        flutter_personal[Personal Flutter App]
-        flutter_business[Business Flutter App]
-        admin_react[React Admin Dashboard]
+    subgraph "Client Apps"
+        flutter_personal["Personal Flutter App"]
+        flutter_business["Business Flutter App"]
+        admin_react["React Admin Dashboard"]
     end
 
-    subgraph Unified Backend (backend)
-        express_server[Express server.ts]
-        routes_personal[routes/personal.ts /api]
-        routes_business[business-service/src/routes.ts]
-        routes_nfc[nfc-service/src/routes.ts]
-        prisma_client[Prisma Client ORM]
+    subgraph "Unified Backend (backend)"
+        express_server["Express server.ts"]
+        routes_personal["routes/personal.ts /api"]
+        routes_business["business-service/src/routes.ts"]
+        routes_nfc["nfc-service/src/routes.ts"]
+        prisma_client["Prisma Client ORM"]
     end
 
-    subgraph Databases & Services
-        postgres_db[(PostgreSQL Database)]
-        firebase_auth[Firebase Auth Admin SDK]
+    subgraph "Databases & Services"
+        postgres_db[("PostgreSQL Database")]
+        firebase_auth["Firebase Auth Admin SDK"]
     end
 
     flutter_personal -->|Firebase Bearer Token| routes_personal
