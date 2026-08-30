@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id            String   @id @default(uuid())
+  name          String
+  email         String   @unique
+  password      String
+  phone         String?
+  role          String   @default("owner") // owner, admin
+  kycStatus     String   @default("pending")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  businesses    Business[]
+  auditLogs     AuditLog[]
+}
+
+model Business {
+  id            String   @id @default(uuid())
+  name          String
+  ownerId       String
+  category      String?
+  taxId         String?  @unique
+  cacNumber     String?  @unique
+  address       String?
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  owner         User     @relation(fields: [ownerId], references: [id])
+  employees     Employee[]
+  wallets       Wallet[]
+}
+
+model Employee {
+  id            String   @id @default(uuid())
+  name          String
+  businessId    String
+  role          String   @default("employee")
+  status        String   @default("active")
+  accountNumber String   @unique
+  dailyLimit    Float    @default(500000.0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  business      Business @relation(fields: [businessId], references: [id])
+  wallets       Wallet[]
+  transactions  Transaction[]
+}
+
+model Wallet {
+  id            String   @id @default(uuid())
+  businessId    String?
+  employeeId    String?
+  balance       Float    @default(0.0)
+  currency      String   @default("NGN")
+  type          String   @default("main") // main, employee_sub
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  business      Business? @relation(fields: [businessId], references: [id])
+  employee      Employee? @relation(fields: [employeeId], references: [id])
+}
+
+model Transaction {
+  id                    String   @id @default(uuid())
+  employeeId            String?
+  amount                Float
+  type                  String   // nfc, transfer, qr, withdrawal
+  direction             String   // credit, debit
+  status                String   @default("completed")
+  reference             String   @unique
+  counterpartyName      String?
+  counterpartyAccount   String?
+  timestamp             DateTime @default(now())
+
+  employee              Employee? @relation(fields: [employeeId], references: [id])
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  userId        String
+  action        String   // login, create_employee, freeze_employee, etc.
+  details       String?
+  ipAddress     String?
+  timestamp     DateTime @default(now())
+
+  user          User     @relation(fields: [userId], references: [id])
+}

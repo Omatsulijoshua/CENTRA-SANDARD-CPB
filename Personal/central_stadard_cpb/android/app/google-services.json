@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "988647197976",
+    "project_id": "central-standard-cpb",
+    "storage_bucket": "central-standard-cpb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988647197976:android:e556d58e52b918f35c626d",
+        "android_client_info": {
+          "package_name": "com.example.central_stadard_cpb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtf1F88Gf4ST6_oK6L17DF2E1C5bL4wWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Centra Standard Business API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4100
+paths:
+  /auth/signup-business:
+    post:
+      summary: Owner-only business signup and onboarding start
+      responses:
+        '201':
+          description: Business owner and business created
+  /auth/login-owner:
+    post:
+      summary: Business owner login
+      responses:
+        '200':
+          description: Owner access token
+  /auth/login-employee:
+    post:
+      summary: Employee receive-only login
+      responses:
+        '200':
+          description: Employee access token
+  /employees/create:
+    post:
+      summary: Owner creates employee profile with receiving account
+      responses:
+        '201':
+          description: Employee profile created
+  /employees:
+    get:
+      summary: Owner lists business employees
+      responses:
+        '200':
+          description: Employee list
+  /payments/nfc/initiate:
+    post:
+      summary: Create NFC receive session
+      description: Enforces NGN 100,000 transaction limit and provider-ready secure payment flow.
+      responses:
+        '201':
+          description: NFC session created
+        '422':
+          description: Limit exceeded
+  /payments/nfc/confirm:
+    post:
+      summary: Provider confirms NFC transaction result
+      responses:
+        '200':
+          description: Transaction updated
+  /transactions:
+    get:
+      summary: Role-scoped transaction feed
+      responses:
+        '200':
+          description: Transactions
+  /wallet/withdraw:
+    post:
+      summary: Owner-only withdrawal request
+      responses:
+        '202':
+          description: Withdrawal queued for approval
+  /businesses/dashboard:
+    get:
+      summary: Owner business dashboard
+      responses:
+        '200':
+          description: Balance, live transactions, employees, fraud flags
+  /businesses/capability-check:
+    get:
+      summary: Verify whether a business account is ready for receive-only employee banking and NFC payments
+      description: >
+        Returns readiness flags, blockers, warnings, limits, KYC status, trusted device count,
+        active employee count, NFC enablement, unresolved high-risk fraud flags, and the rule
+        that customer card PINs must only be captured on the customer device or PCI-compliant
+        payment provider input.
+      parameters:
+        - in: query
+          name: businessId
+          required: false
+          schema:
+            type: string
+          description: Admin-only fallback when the bearer token is not scoped to a business.
+      responses:
+        '200':
+          description: Capability verification result
+        '404':
+          description: Business not found

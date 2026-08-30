@@ -1,0 +1,16 @@
+{
+  "name": "centra-business-functions",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,21 @@
+name: centra_standard_customer_pay
+description: Customer-facing payment confirmation shell for Centra Standard Business.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  local_auth: ^2.3.0
+  nfc_manager: ^4.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

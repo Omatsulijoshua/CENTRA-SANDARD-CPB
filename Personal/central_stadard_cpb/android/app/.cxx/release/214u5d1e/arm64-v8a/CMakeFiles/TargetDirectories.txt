@@ -1,0 +1,2 @@
+C:/Users/SirBill's/StudioProjects/central_stadard_cpb/android/app/.cxx/release/214u5d1e/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/SirBill's/StudioProjects/central_stadard_cpb/android/app/.cxx/release/214u5d1e/arm64-v8a/CMakeFiles/rebuild_cache.dir

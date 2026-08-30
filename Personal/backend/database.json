@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Bank Administrator",
+      "email": "admin@bank.com",
+      "password": "$2b$10$b5yPg7UenDmOFuURaEl93u5xZ/6UKFWoy8FjAiLVAWZWW1Cv0IZvO",
+      "phone": "08000000000",
+      "accountNumber": "0000000000",
+      "balance": 0,
+      "kycStatus": "verified",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Demo User",
+      "email": "demo@bank.com",
+      "password": "$2b$10$cG3s.cxtkUCBGAqqApNZ0.qDB1YSURatRlmgp238O4rE6IlhfepiC",
+      "phone": "08012345678",
+      "accountNumber": "0123456789",
+      "balance": 500000,
+      "kycStatus": "verified",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Omatsuli Toritseju Joshua",
+      "email": "joshuaomatsuli01@gmail.com",
+      "password": "$2b$10$T9MEbiyCeYByg8lD39r0A.O2/F0rVbPaubLkInaavyrc4YZSa/yl2",
+      "phone": "08000000000",
+      "accountNumber": "7420185801",
+      "balance": 10000,
+      "kycStatus": "verified",
+      "role": "user"
+    }
+  ],
+  "transactions": []
+}
